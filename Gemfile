@@ -12,9 +12,10 @@ gem 'rails', '~> 5.0.2'                    # Ruby on Rails
 gem 'httparty', '~> 0.14.0'                # HTTP client based on Net::HTTP
 
 # Frontend + asset pipeline
-gem 'bulma-rails', '~> 0.3.2'              # CSS framework
 gem 'coffee-rails', '~> 4.2.1'             # JS preprocessor
+gem 'haml', '~> 4.0.7'                     # HTML preprocessor
 gem 'jquery-rails', '~> 4.2.1'             # jQuery JS library
+gem 'rails-assets-bulma', '~> 0.4.0', source: 'https://rails-assets.org' # CSS framework
 gem 'sass-rails', '~> 5.0.6'               # CSS preprocessor
 gem 'turbolinks', '~> 5'                   # Avoids full page reloads
 gem 'uglifier', '~> 3.1.4'                 # JS compressor

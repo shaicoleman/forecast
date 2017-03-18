@@ -1,0 +1,27 @@
+%form{:action => ""}
+  %section.hero.is-small
+    .hero-body
+      .container
+        .field.has-addons
+          .control
+            %input#city.input(name="city" value=@city placeholder="Enter a city, e.g. Dublin, IE")
+          .control
+            %a.button.is-info Search
+- if @current_conditions.present?
+  %section.hero.is-primary
+    .hero-body
+      .container
+        .columns
+          .column
+            %h1.title.is-1 #{@current_conditions[:temp].round}°
+            %h2.subtitle.is-3 #{@current_conditions[:city]}, #{@current_conditions[:country_code]}
+          .column
+            %img{src: @current_conditions[:icon_url]}
+            %h3.subtitle.is-4= @current_conditions[:condition]
+          .column
+            - if @current_conditions[:wind_speed]
+              %h4.subtitle.is-5 Wind Speed: #{@current_conditions[:wind_speed].round} km/h
+            - if @current_conditions[:cloud_cover]
+              %h4.subtitle.is-5 Cloud Cover: #{@current_conditions[:cloud_cover]}%
+            - if @current_conditions[:visibility]
+              %h4.subtitle.is-5 Visibility: #{@current_conditions[:visibility].round(1)} km
