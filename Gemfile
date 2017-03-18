@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.0.beta1'              # Ruby on Rails
+gem 'rails', '~> 5.0.2'                    # Ruby on Rails
 gem 'httparty', '~> 0.14.0'                # HTTP client based on Net::HTTP
 
 # Frontend + asset pipeline
@@ -30,7 +30,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec', require: false              # RSpec BDD testing framework
+  gem 'rspec-rails', require: false        # RSpec BDD testing framework
   gem 'simplecov', require: false          # Code coverage analysis
   gem 'vcr', require: false                # Record and replay HTTP requests for testing
   gem 'webmock', require: false            # Stubbing HTTP requests
