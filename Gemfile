@@ -5,51 +5,35 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'rails', '~> 5.1.0.beta1'              # Ruby on Rails
+gem 'httparty', '~> 0.14.0'                # HTTP client based on Net::HTTP
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.0.beta1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-# Use Puma as the app server
-gem 'puma', '~> 3.7'
-# Use SCSS for stylesheets
-gem 'sass-rails', github: "rails/sass-rails"
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# Frontend + asset pipeline
+gem 'haml', '~> 4.0.7'                     # HTML preprocessor
+gem 'sass-rails', '~> 5.0.6'               # CSS preprocessor
+gem 'coffee-rails', '~> 4.2.1'             # JS preprocessor
+gem 'uglifier', '~> 3.1.4'                 # JS compressor
+gem 'jquery-rails', '~> 4.2.1'             # jQuery JS library
+gem 'turbolinks', '~> 5'                   # Avoids full page reloads
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.7.0'
-  gem 'selenium-webdriver'
+  gem 'awesome_print'                      # Pretty print with colour and indent
+  gem 'byebug'                             # Ruby debugger
+  gem 'puma'                               # Development web server
+  gem 'spring'                             # Rails preloader for development/test
+  gem 'spring-watcher-listen'              # Monitor filesystem changes for spring
+  gem 'spring-commands-rspec'              # Enable spring for the rspec command
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rubocop', '0.47.1', require: false  # Ruby static code analyser
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  gem 'rspec', require: false              # RSpec BDD testing framework
+  gem 'simplecov', require: false          # Code coverage analysis
+  gem 'vcr', require: false                # Record and replay HTTP requests for testing
+  gem 'webmock', require: false            # Stubbing HTTP requests
+  gem 'capybara', require: false           # Simulates user interactions for integration tests
+  gem 'selenium-webdriver', require: false # Simulates web browser interactions
+end
