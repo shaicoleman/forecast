@@ -1,0 +1,31 @@
+AllCops:
+  TargetRubyVersion: 2.4
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ExtraSpacing:
+  Exclude:
+    - 'Gemfile'
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+   - 'spec/**/*.rb'
+
+Rails:
+  Enabled: true
+
+Rails/FilePath:
+  Enabled: false
