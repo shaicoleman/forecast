@@ -33,7 +33,7 @@ end
 
 group :test do
   gem 'capybara', require: false           # Simulates user interactions for integration tests
-  gem 'rspec-rails', require: false        # RSpec BDD testing framework
+  gem 'rspec-rails', require: false        # RSpec BDD testing framework with Rails support
   gem 'selenium-webdriver', require: false # Simulates web browser interactions
   gem 'simplecov', require: false          # Code coverage analysis
   gem 'vcr', require: false                # Record and replay HTTP requests for testing
