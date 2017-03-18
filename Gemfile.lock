@@ -44,6 +44,8 @@ GEM
     ast (2.3.0)
     awesome_print (1.7.0)
     builder (3.2.3)
+    bulma-rails (0.3.2)
+      sass (~> 3.2)
     byebug (9.0.6)
     capybara (2.13.0)
       addressable
@@ -219,6 +221,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bulma-rails (~> 0.3.2)
   byebug
   capybara
   coffee-rails (~> 4.2.1)
