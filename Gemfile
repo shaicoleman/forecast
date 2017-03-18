@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+# Workaround to force HTTPS for GitHub URLs for bundler < 2.0
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
@@ -12,7 +13,6 @@ gem 'httparty', '~> 0.14.0'                # HTTP client based on Net::HTTP
 
 # Frontend + asset pipeline
 gem 'coffee-rails', '~> 4.2.1'             # JS preprocessor
-gem 'haml', '~> 4.0.7'                     # HTML preprocessor
 gem 'jquery-rails', '~> 4.2.1'             # jQuery JS library
 gem 'sass-rails', '~> 5.0.6'               # CSS preprocessor
 gem 'turbolinks', '~> 5'                   # Avoids full page reloads
