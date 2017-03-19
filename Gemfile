@@ -15,8 +15,9 @@ gem 'httparty', '~> 0.14.0'                # HTTP client based on Net::HTTP
 gem 'coffee-rails', '~> 4.2.1'             # JS preprocessor
 gem 'haml', '~> 4.0.7'                     # HTML preprocessor
 gem 'jquery-rails', '~> 4.2.1'             # jQuery JS library
-gem 'rails-assets-bulma', '~> 0.4.0', source: 'https://rails-assets.org'       # CSS framework
-gem 'rails-assets-lightslider', '~> 1.1.6', source: 'https://rails-assets.org' # JQuery Slider
+gem 'rails-assets-bulma', '~> 0.4.0',        source: 'https://rails-assets.org' # CSS framework
+gem 'rails-assets-font-awesome', '~> 4.3.0', source: 'https://rails-assets.org' # Icon set font
+gem 'rails-assets-lightslider', '~> 1.1.6',  source: 'https://rails-assets.org' # JQuery Slider
 gem 'sass-rails', '~> 5.0.6'               # CSS preprocessor
 gem 'uglifier', '~> 3.1.4'                 # JS compressor
 

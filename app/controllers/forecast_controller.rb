@@ -3,7 +3,7 @@ class ForecastController < ApplicationController
     @city = params[:city]
     return unless @city.present?
     owm = OpenWeatherMapClient.new
-    @current_conditions = owm.current_conditions(city: @city)
+    @current = owm.current_conditions(city: @city)
     @forecast = owm.forecast(city: @city, days: 16)
   rescue OpenWeatherMapClient::Error => e
   end

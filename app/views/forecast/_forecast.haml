@@ -29,7 +29,10 @@
                                 %h5.subtitle.is-6 Humidity: #{day[:humidity]}%
                             .column
                               - if day[:wind_speed]
-                                %h5.subtitle.is-6 Wind Speed: #{day[:wind_speed].round} km/h
+                                %h5.subtitle.is-6
+                                  Wind: #{day[:wind_speed].round} km/h
+                                  - if day[:wind_deg]
+                                    %i.fa.fa-long-arrow-up(style="transform: rotate(#{day[:wind_deg] - 180}deg)")
                               - if day[:cloud_cover]
                                 %h5.subtitle.is-6 Cloud Cover: #{day[:cloud_cover]}%
                               - if day[:pressure]
