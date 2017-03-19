@@ -2,17 +2,16 @@
   %section.hero.is-info
     .hero-body
       .container
-        - @forecast[:days].in_groups_of(4) do |group|
-          .columns
-            - group.each do |day|
-              .column
-                - if day
-                  %h4.subtitle.is-5 #{day[:date].strftime('%A %d')}
-                  %h4.subtitle.is-3 #{day[:temp_max].round}°
-                  %img{src: day[:icon_url]}
-                  %h4.subtitle.is-6 #{day[:condition]}
-          .columns
-            - group.each do |day|
-              .column
-                - if day
-                  %h4.subtitle.is-6 #{day[:temp_min].round}° Low
+        .slides
+          - @forecast[:days].in_groups_of(4) do |group|
+            .slide
+              .columns
+                - group.each do |day|
+                  .column
+                    - if day
+                      .forecast-top
+                        %h4.subtitle.is-5 #{day[:date].strftime('%A %d')}
+                        %h4.subtitle.is-3 #{day[:temp_max].round}°
+                        %img{src: day[:icon_url]}
+                        %h4.subtitle.is-6 #{day[:condition]}
+                      %h4.subtitle.is-6 #{day[:temp_min].round}° Low

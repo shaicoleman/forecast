@@ -2,4 +2,6 @@
 
 .container { max-width: 800px; }
 .hero.is-small .hero-body { padding: 2rem 1.5rem; }
-.hero.is-info .column > * { margin-top: 0; margin-bottom: 0; }
+.forecast-top > * { margin-top: 0 !important; margin-bottom: 0 !important; }
+
+.lSAction { display: none !important; }
