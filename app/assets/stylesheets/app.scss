@@ -1,7 +1,9 @@
 @import "bulma";
 
 .container { max-width: 800px; }
-.hero.is-small .hero-body { padding: 2rem 1.5rem; }
+.hero .hero-body { padding: 2.5rem; }
+.hero.is-small .hero-body { padding: 1.5rem; }
 .forecast-top > * { margin-top: 0 !important; margin-bottom: 0 !important; }
+.day-widget.is-inactive { opacity: 0.5; }
 
 .lSAction { display: none !important; }

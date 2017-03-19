@@ -9,9 +9,32 @@
                 - group.each do |day|
                   .column
                     - if day
-                      .forecast-top
-                        %h4.subtitle.is-5 #{day[:date].strftime('%A %d')}
-                        %h4.subtitle.is-3 #{day[:temp_max].round}°
-                        %img{src: day[:icon_url]}
-                        %h4.subtitle.is-6 #{day[:condition]}
-                      %h4.subtitle.is-6 #{day[:temp_min].round}° Low
+                      .day-widget
+                        .forecast-top
+                          %h4.subtitle.is-5 #{day[:date].strftime('%A %d')}
+                          %h4.subtitle.is-3 #{day[:temp_max].round}°
+                          %img{src: day[:icon_url]}
+                          %h4.subtitle.is-6 #{day[:condition]}
+                        %h4.subtitle.is-6 #{day[:temp_min].round}° Low
+                        .forecast-details.is-hidden
+                          .columns
+                            .column
+                              %h4.subtitle.is-5!= day[:date].strftime('%A<br>%d %B %Y')
+                            .column
+                              - if day[:rain]
+                                %h5.subtitle.is-6 Rain: #{day[:rain]}mm
+                              - if day[:snow]
+                                %h5.subtitle.is-6 Snow: #{day[:snow]}mm
+                              - if day[:humidity]
+                                %h5.subtitle.is-6 Humidity: #{day[:humidity]}%
+                            .column
+                              - if day[:wind_speed]
+                                %h5.subtitle.is-6 Wind Speed: #{day[:wind_speed].round} km/h
+                              - if day[:cloud_cover]
+                                %h5.subtitle.is-6 Cloud Cover: #{day[:cloud_cover]}%
+                              - if day[:pressure]
+                                %h5.subtitle.is-6 Pressure: #{day[:pressure].round} hPa
+  %section#forecast-details-section.hero.is-light.is-small.is-hidden
+    .hero-body
+      .container
+        #forecast-details
