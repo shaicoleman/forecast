@@ -22,9 +22,9 @@
                               %h4.subtitle.is-5!= day[:date].strftime('%A<br>%d %B %Y')
                             .column
                               - if day[:rain]
-                                %h5.subtitle.is-6 Rain: #{day[:rain]}mm
+                                %h5.subtitle.is-6 Rain: #{day[:rain].round(1)}mm
                               - if day[:snow]
-                                %h5.subtitle.is-6 Snow: #{day[:snow]}mm
+                                %h5.subtitle.is-6 Snow: #{day[:snow].round(1)}mm
                               - if day[:humidity]
                                 %h5.subtitle.is-6 Humidity: #{day[:humidity]}%
                             .column
