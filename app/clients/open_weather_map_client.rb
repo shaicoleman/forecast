@@ -16,17 +16,15 @@ class OpenWeatherMapClient
   # Will only return the primary weather condition
   def current_conditions(city:)
     result = api_call(path: '/data/2.5/weather', query: { q: city, units: 'metric' })
-    city = result['name']
-    country_code = result.dig('sys', 'country')
-    icon_url = icon_url(icon_id: result.dig('weather', 0, 'icon'))
-    condition = result.dig('weather', 0, 'description').titleize
-    wind_speed = wind_speed_in_kmh(result.dig('wind', 'speed'))
-    wind_deg = result.dig('wind', 'deg')
-    cloud_cover = result.dig('clouds', 'all')
-    visibility = result['visibility'] / 1000.0 if result['visibility']
-    temp = result.dig('main', 'temp')
-    { city: city, country_code: country_code, icon_url: icon_url, condition: condition, temp: temp,
-      wind_speed: wind_speed, wind_deg: wind_deg, cloud_cover: cloud_cover, visibility: visibility }
+    { city:         result['name'],
+      cloud_cover:  result.dig('clouds', 'all'),
+      condition:    result.dig('weather', 0, 'description').titleize,
+      country_code: result.dig('sys', 'country'),
+      icon_url:     icon_url(icon_id: result.dig('weather', 0, 'icon')),
+      temp:         result.dig('main', 'temp'),
+      visibility:  (result['visibility'] / 1000.0 if result['visibility']),
+      wind_deg:     result.dig('wind', 'deg'),
+      wind_speed:   wind_speed_in_kmh(result.dig('wind', 'speed')) }
   end
 
   # https://openweathermap.org/forecast16
@@ -34,15 +32,22 @@ class OpenWeatherMapClient
   # Dates returned assume a UTC timezone
   def forecast(city:, days: 3)
     result = api_call(path: '/data/2.5/forecast/daily', query: { q: city, cnt: days, units: 'metric' })
-    city = result.dig('city', 'name')
-    country_code = result.dig('city', 'country')
     days = result['list'].map.with_index do |day, i|
-      { date: i.days.from_now.utc.to_date, cloud_cover: day['clouds'],
-        wind_speed: wind_speed_in_kmh(day['speed']), wind_deg: day['deg'],
-        pressure: day['pressure'], humidity: day['humidity'], rain: day['rain'].to_f,
-        temp_min: day.dig('temp', 'min'), temp_max: day.dig('temp', 'max') }
+      { cloud_cover: day['clouds'],
+        condition:   day.dig('weather', 0, 'description').titleize,
+        date:        i.days.from_now.utc.to_date,
+        humidity:    day['humidity'],
+        icon_url:    icon_url(icon_id: day.dig('weather', 0, 'icon')),
+        pressure:    day['pressure'],
+        rain:        day['rain'].to_f,
+        temp_max:    day.dig('temp', 'max'),
+        temp_min:    day.dig('temp', 'min'),
+        wind_deg:    day['deg'],
+        wind_speed:  wind_speed_in_kmh(day['speed']) }
     end
-    { city: city, country_code: country_code, days: days }
+    { city: result.dig('city', 'name'),
+      country_code: result.dig('city', 'country'),
+      days: days }
   end
 
   private
@@ -63,7 +68,7 @@ class OpenWeatherMapClient
   def get_json(url:, query:)
     response = HTTParty.get(url, query: query, format: :json, timeout: 5)
     response.parsed_response
-  rescue HTTParty::Error => e
+  rescue HTTParty::Error, Timeout::Error => e
     raise NetError, e.message
   rescue JSON::ParserError, TypeError
     raise ParseError, e.message

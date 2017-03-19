@@ -4,5 +4,7 @@ class ForecastController < ApplicationController
     return unless @city.present?
     owm = OpenWeatherMapClient.new
     @current_conditions = owm.current_conditions(city: @city)
+    @forecast = owm.forecast(city: @city, days: 16)
+  rescue OpenWeatherMapClient::Error => e
   end
 end
