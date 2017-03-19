@@ -5,3 +5,4 @@ $ ->
     $(this).removeClass('is-inactive')
     $('#forecast-details-section').removeClass('is-hidden')
     $('#forecast-details').html($(this).find('.forecast-details').html())
+    $(document).scrollTop($(document).height());
