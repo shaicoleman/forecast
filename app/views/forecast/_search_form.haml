@@ -7,7 +7,7 @@
             %input#city.input(name='city' value=@city placeholder='Enter a city, e.g. Dublin, IE')
           .control
             %button.button.is-info(type='submit') Search
-        - if @input_error
+        - if defined?(@input_error) && @input_error.present?
           .help.is-danger Please fill in the city
-        - if @error
+        - if defined?(@error) && @error.present?
           .notification.is-danger= @error

@@ -1,4 +1,4 @@
-- if @forecast.present?
+- if defined?(@forecast) && @forecast.present?
   %section.hero.is-info
     .hero-body
       .container
