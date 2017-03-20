@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "SearchCityForForecasts", type: :feature, vcr: true do
+RSpec.feature 'SearchCityForForecasts', type: :feature, vcr: true do
   it 'shows an error when city is empty' do
     visit '/'
     click_button 'Search'

@@ -1,24 +1,9 @@
-# README
+# Forecast
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple Rails app to retreive the weather forecast using the OpenWeatherMap API
 
-Things you may want to cover:
+* Ruby 2.3/2.4
 
-* Ruby version
+* No database required
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* To run the test suite: `bundle exec rspec`
