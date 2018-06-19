@@ -37,6 +37,7 @@ group :test do
   gem 'capybara', '~> 3.1.1', require: false  # Simulates user interactions for integration tests
   # gem 'chromedriver-helper', require: false # chromedriver system tests
   gem 'rspec-rails', require: false         # RSpec BDD testing framework with Rails support
+  gem 'rspec_junit_formatter', require: false # RSpec formatter for CircleCI
   gem 'selenium-webdriver', require: false  # Simulates web browser interactions
   gem 'simplecov', require: false           # Code coverage analysis
   gem 'vcr', require: false                 # Record and replay HTTP requests for testing
