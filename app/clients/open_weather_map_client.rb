@@ -59,7 +59,7 @@ class OpenWeatherMapClient
     url = "http://api.openweathermap.org#{path}"
     query[:appid] = @api_key
     json = get_json(url: url, query: query)
-    raise Error, 'Invalid API response' unless json['cod'].present?
+    raise Error, 'Invalid API response' if json['cod'].blank?
     raise NotFound, json['message'] if json['cod'].to_i == 404
     raise Error, json['message'] if json['cod'].to_i != 200
     json

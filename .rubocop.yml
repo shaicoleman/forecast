@@ -1,24 +1,22 @@
 AllCops:
-  TargetRubyVersion: 2.4
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/MutableConstant:
-  Enabled: false
+  TargetRubyVersion: 2.5
 
 Style/Documentation:
   Enabled: false
 
-Style/ExtraSpacing:
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/MixinUsage:
+  Exclude:
+   - 'bin/*'
+
+Style/MutableConstant:
+  Enabled: false
+
+Layout/ExtraSpacing:
   Exclude:
     - 'Gemfile'
-
-Metrics/LineLength:
-  Max: 120
-
-Metrics/MethodLength:
-  Max: 20
 
 Metrics/AbcSize:
   Max: 25
@@ -26,6 +24,12 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Exclude:
    - 'spec/**/*.rb'
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 20
 
 Rails:
   Enabled: true
