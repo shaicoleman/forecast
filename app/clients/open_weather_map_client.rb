@@ -12,7 +12,7 @@ class OpenWeatherMapClient
   end
 
   # https://openweathermap.org/current
-  # Example: OpenWeatherClient.new.current_conditions(city: 'Dublin, IE')
+  # Example: OpenWeatherMapClient.new.current_conditions(city: 'Dublin, IE')
   # Will only return the primary weather condition
   def current_conditions(city:)
     result = api_call(path: '/data/2.5/weather', query: { q: city, units: 'metric' })
@@ -28,7 +28,7 @@ class OpenWeatherMapClient
   end
 
   # https://openweathermap.org/forecast16
-  # Example: OpenWeatherClient.new.forecast(city: 'Dublin, IE')
+  # Example: OpenWeatherMapClient.new.forecast(city: 'Dublin, IE')
   # Dates returned assume a UTC timezone
   def forecast(city:, days: 3)
     result = api_call(path: '/data/2.5/forecast/daily', query: { q: city, cnt: days, units: 'metric' })
